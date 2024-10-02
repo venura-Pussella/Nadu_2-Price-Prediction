@@ -2,7 +2,7 @@
 from pathlib import Path
 from src.constants import *
 from src.utils.common import read_yaml
-from src.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataPreprocessingConfig, ModelEvaluationConfig, ModelTrainerConfig
+from src.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformationConfig
 
 
 def load_configuration(config_filepath: Path = CONFIG_FILE_PATH, schema_filepath: Path = SCHEMA_FILE_PATH):
@@ -40,7 +40,7 @@ def get_data_validation_config(config, schema) -> DataValidationConfig:
     )
 ###>>> Data Validation Configuration End <<<###
 
-## Data Preprocessing Configuration Start ##
+### Data Preprocessing Configuration Start ###
 def get_data_preprocessing_config(config) -> DataPreprocessingConfig:
 
     # Extract data validation settings from the config
@@ -52,12 +52,32 @@ def get_data_preprocessing_config(config) -> DataPreprocessingConfig:
         unzip_data_dir=data_preprocessing.unzip_data_dir,
         local_data_file=data_preprocessing.local_data_file,
     )
-## Data Preprocessing Configuration End ##
+### Data Preprocessing Configuration End ###
 
 
 
 
-## Data Transformation Configuration ##
+### Data Transformation Configuration Start ###
+
+# Function to get data ingestion configuration from the loaded config
+def get_data_transformation_config(config) -> DataTransformationConfig:
+
+    # Extract data ingestion settings from the config
+    data_transformation = config.data_transformation
+
+    # Create and return a DataIngestionConfig instance
+    return DataTransformationConfig(
+        root_dir=data_transformation.root_dir,
+        data_path=data_transformation.data_path,
+        local_data_file=data_transformation.local_data_file
+    )
+### Data Transformation Configuration End ###
+
+
+
+
+
+
 
 ## Model Training Configuration ##
 
