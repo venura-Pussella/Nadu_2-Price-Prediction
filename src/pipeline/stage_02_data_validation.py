@@ -20,7 +20,7 @@ def data_validation_training_pipeline():
         validate_all_columns(data_validation_config)
 
     except Exception as e:
-        logger.error(f"An error occurred during data validation: {e}")
+        logger.error(f"An error occurred during data validation pipeline: {e}")
 
 if __name__ == "__main__":
 

@@ -22,7 +22,7 @@ def data_preprocessing_training_pipeline():
         save_preprocessed_excel(data_preprocessing_config, dropped_columns_data)
 
     except Exception as e:
-        logger.error(f"An error occurred during data preprocessing: {e}")
+        logger.error(f"An error occurred during data preprocessing pipeline: {e}")
 
 if __name__ == "__main__":
 

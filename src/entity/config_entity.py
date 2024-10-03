@@ -30,11 +30,23 @@ class DataTransformationConfig:
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path
-    train_data_path: Path
-    test_data_path: Path
+    local_data_path: Path
+    train_y_data_file: Path
+    train_x_data_file: Path
+    test_y_data_file: Path
+    test_x_data_file: Path
+    model_checkpoint_path: Path
     model_name: str
-    n_estimators: int
-    max_depth: int
+    n_units_layer1: int
+    n_units_layer2: int
+    n_units_layer3: int
+    dropout_rate: float
+    sequence_length: int
+    optimizer: str
+    loss_function: str
+    epochs: int
+    batch_size: int
+    validation_split: float
     target_column: str
 
 @dataclass(frozen=True)
