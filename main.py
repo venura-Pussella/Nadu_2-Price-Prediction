@@ -24,7 +24,6 @@ try:
 except Exception as e:
     logger.exception(e)
 
-
 STAGE_NAME = "Data Preprocessing stage"
 
 try:
@@ -33,7 +32,6 @@ try:
     logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
 except Exception as e:
     logger.exception(e)
-
 
 STAGE_NAME = "Data Transformation stage"
 
@@ -44,7 +42,6 @@ try:
 except Exception as e:
     logger.exception(e)
 
-
 STAGE_NAME = "Model Training stage"
 
 try:
@@ -53,3 +50,4 @@ try:
     logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
 except Exception as e:
     logger.exception(e)
+

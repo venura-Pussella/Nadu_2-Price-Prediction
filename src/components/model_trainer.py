@@ -7,7 +7,7 @@ import numpy as np
 def sequence_creation_train_test_split(config):
     # Read the Excel file into a DataFrame
     df = pd.read_excel(config.local_data_path)
-    
+ 
     # Define sequence length and number of features
     sequence_length = config.sequence_length 
     num_features = len(df.columns)
@@ -58,11 +58,6 @@ def save_train_test_data_to_excel(train_x, test_x, train_y, test_y, config):
     test_x_df.to_excel(test_x_path, index=False)
     test_y_df.to_excel(test_y_path, index=False)
 
-    print(f"Train and test data saved to Excel files:\n"
-          f"Train X: {train_x_path}\nTrain Y: {train_y_path}\n"
-          f"Test X: {test_x_path}\nTest Y: {test_y_path}")
-
-
 def lstm_model_trainer(train_x, train_y, config):
 
     # Create the LSTM model using the provided config
@@ -80,7 +75,7 @@ def lstm_model_trainer(train_x, train_y, config):
     model.add(Dropout(config.dropout_rate))
 
     # Add a dense output layer
-    model.add(Dense(units=1))
+    model.add(Dense(units=1,activation=config.activation))
 
     # Compile the model using the config
     model.compile(optimizer=config.optimizer, loss=config.loss_function)

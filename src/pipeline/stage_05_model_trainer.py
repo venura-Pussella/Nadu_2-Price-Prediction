@@ -14,16 +14,16 @@ def model_trainer_training_pipeline():
         model_trainer_config = get_model_trainer_config(config,schema)
 
         # Create directories related to data ingestion (root directory)
-        create_directories([model_trainer_config.root_dir])
+        create_directories([model_trainer_config.root_dir, model_trainer_config.root_dir_train, model_trainer_config.root_dir_test])
 
         # Sequence creation
         train_x, test_x, train_y, test_y = sequence_creation_train_test_split(model_trainer_config)
         
-        # # Saving data to an excel from numpy array (3D to 2D)
-        # save_train_test_data_to_excel(train_x, test_x, train_y, test_y, config)
+        # Saving data to an excel from numpy array (3D to 2D)
+        save_train_test_data_to_excel(train_x, test_x, train_y, test_y, model_trainer_config)
 
-        # # Train the model
-        # lstm_model_trainer(train_x, train_y, config)
+        # Train the model
+        lstm_model_trainer(train_x, train_y, model_trainer_config)
 
     except Exception as e:
         logger.error(f"An error occurred in model trainer : {e}")

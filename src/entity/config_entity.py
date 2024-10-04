@@ -30,6 +30,8 @@ class DataTransformationConfig:
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path
+    root_dir_train: Path
+    root_dir_test: Path
     local_data_path: Path
     train_y_data_file: Path
     train_x_data_file: Path
@@ -40,6 +42,7 @@ class ModelTrainerConfig:
     n_units_layer1: int
     n_units_layer2: int
     n_units_layer3: int
+    activation: str
     dropout_rate: float
     sequence_length: int
     optimizer: str

@@ -23,21 +23,24 @@ data_transformation:
 
 model_trainer:
   root_dir: artifacts/model_trainer
+  root_dir_train: artifacts/model_trainer/train
+  root_dir_test: artifacts/model_trainer/test
   local_data_path: artifacts/data_transformation/lstm_transformed.xlsx
   train_x_data_file: artifacts/model_trainer/train/train_x.xlsx
   train_y_data_file: artifacts/model_trainer/train/train_y.xlsx
-  test_x_data_file: artifacts/data_transformation/test/test_x.xlsx
-  test_y_data_file: artifacts/data_transformation/test/test_y.xlsx
+  test_x_data_file: artifacts/model_trainer/test/test_x.xlsx
+  test_y_data_file: artifacts/model_trainer/test/test_y.xlsx
   model_checkpoint_path: artifacts/model_trainer/model/best_model.keras
   model_name: best_model.keras
   sequence_length: 30
   n_units_layer1: 128
   n_units_layer2: 64
   n_units_layer3: 32
+  activation: 'linear'
   dropout_rate: 0.2
-  optimizer: "adam"
-  loss_function: "mean_squared_error"
-  epochs: 300
+  optimizer: 'adam'
+  loss_function: 'mean_squared_error'
+  epochs: 5
   batch_size: 32
   validation_split: 0.2
 

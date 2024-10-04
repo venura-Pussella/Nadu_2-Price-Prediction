@@ -90,6 +90,8 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
     # Create and return a DataIngestionConfig instance
     return ModelTrainerConfig(
         root_dir=model_trainer.root_dir,
+        root_dir_train=model_trainer.root_dir_train,
+        root_dir_test=model_trainer.root_dir_test,
         local_data_path=model_trainer.local_data_path,
         train_x_data_file=model_trainer.train_x_data_file,
         train_y_data_file=model_trainer.train_y_data_file,
@@ -100,6 +102,7 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
         n_units_layer1=model_trainer.n_units_layer1,
         n_units_layer2=model_trainer.n_units_layer2,
         n_units_layer3=model_trainer.n_units_layer3,
+        activation=model_trainer.activation,
         dropout_rate=model_trainer.dropout_rate,
         sequence_length=model_trainer.sequence_length,
         optimizer=model_trainer.optimizer,
@@ -107,7 +110,7 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
         epochs=model_trainer.epochs,
         batch_size=model_trainer.batch_size,
         validation_split=model_trainer.validation_split,
-        target_column = schema.TARGET_COLUMN
+        target_column = schema.TARGET_COLUMN.name
     )
 ##>>> Model Training Configuration End <<<##
 
