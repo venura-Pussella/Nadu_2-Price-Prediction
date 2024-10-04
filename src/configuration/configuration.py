@@ -116,5 +116,4 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
 
 
 
-
-## Model Evaluation Configuration ##
+##>>> Model Evaluation Configuration <<<##
