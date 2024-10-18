@@ -2,7 +2,7 @@
 from pathlib import Path
 from src.constants import *
 from src.utils.common import read_yaml
-from src.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformationConfig, ModelTrainerConfig
+from src.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformationConfig, ModelTrainerConfig ,ModelEvaluationConfig
 
 
 def load_configuration(config_filepath: Path = CONFIG_FILE_PATH, schema_filepath: Path = SCHEMA_FILE_PATH):
@@ -56,8 +56,6 @@ def get_data_preprocessing_config(config) -> DataPreprocessingConfig:
 
 
 ###>>> Data Transformation Configuration Start <<<###
-
-# Function to get data ingestion configuration from the loaded config
 def get_data_transformation_config(config) -> DataTransformationConfig:
 
     # Extract data ingestion settings from the config
@@ -73,15 +71,6 @@ def get_data_transformation_config(config) -> DataTransformationConfig:
 
 
 ##>>> Model Training Configuration Start <<<##
-# Function to initialize configuration by reading YAML and creating directories
-def load_configuration(config_filepath: Path = CONFIG_FILE_PATH, schema_filepath: Path = SCHEMA_FILE_PATH):
-
-    config = read_yaml(config_filepath)
-    schema = read_yaml(schema_filepath)
-
-    return config, schema
-
-# Function to get data ingestion configuration from the loaded config
 def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
 
     # Extract data ingestion settings from the config
@@ -98,7 +87,6 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
         test_x_data_file=model_trainer.test_x_data_file,
         test_y_data_file=model_trainer.test_y_data_file,
         model_checkpoint_path=model_trainer.model_checkpoint_path,
-        model_name=model_trainer.model_name,
         n_units_layer1=model_trainer.n_units_layer1,
         n_units_layer2=model_trainer.n_units_layer2,
         n_units_layer3=model_trainer.n_units_layer3,
@@ -115,5 +103,18 @@ def get_model_trainer_config(config,schema) -> ModelTrainerConfig:
 ##>>> Model Training Configuration End <<<##
 
 
+##>>> Model Evaluation Configuration Start <<<##
 
-##>>> Model Evaluation Configuration <<<##
+def get_model_evaluation_config(config) -> ModelEvaluationConfig:
+
+    # Extract data ingestion settings from the config
+    model_evaluation = config.model_evaluation
+
+    # Create and return a DataIngestionConfig instance
+    return ModelEvaluationConfig(
+        root_dir=model_evaluation.root_dir,
+        model_path=model_evaluation.model_path,
+        metric_file_name=model_evaluation.metric_file_name
+    )
+
+##>>> Model Evaluation Configuration End <<<##

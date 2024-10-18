@@ -38,7 +38,6 @@ class ModelTrainerConfig:
     test_y_data_file: Path
     test_x_data_file: Path
     model_checkpoint_path: Path
-    model_name: str
     n_units_layer1: int
     n_units_layer2: int
     n_units_layer3: int
