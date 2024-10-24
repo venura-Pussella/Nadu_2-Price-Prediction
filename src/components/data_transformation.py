@@ -11,7 +11,7 @@ def box_cox_transformation(config):
     # Apply Box-Cox Transformation to 'pettah_average'
     df['pettah_average'], lambda_value = boxcox(df['pettah_average'].replace(0, 0.01))
     
-    return df
+    return df , lambda_value
 
 def min_max_scale(df):
 
