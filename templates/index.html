@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Prediction</title>
+</head>
+<body>
+    <h1>Price Prediction using LSTM</h1>
+    
+    <!-- Form to input 30 days of prices -->
+    <form method="POST" action="/predict">
+        <h2>Enter 30 Days Prices (comma, space, or newline separated):</h2>
+        <textarea name="prices" rows="10" cols="50" placeholder="Paste 30 prices here, separated by commas, spaces, or new lines" required></textarea>
+        <br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Button to retrain the model -->
+    <h2>Need to retrain the model?</h2>
+    <form method="GET" action="/train">
+        <button type="submit">Retrain Model</button>
+    </form>
+    
+</body>
+</html>
